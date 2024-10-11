@@ -1,0 +1,16 @@
+postgres=# create database task_management;
+postgres-# create user db-user with password *****;
+postgres-# alter user db_user with created create-role login;
+postgres=# grant all privileges on database task_management to db_user ;
+
+postgres=#\c task_management;
+
+
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    due_date Date,
+    status VARCHAR(20) NOT NULL
+    check(status in ('Pending','In_Progress','Completed'))
+);
