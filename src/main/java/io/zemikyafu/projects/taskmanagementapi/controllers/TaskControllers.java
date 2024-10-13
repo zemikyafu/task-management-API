@@ -1,3 +1,4 @@
+
 package io.zemikyafu.projects.taskmanagementapi.controllers;
 
 import io.zemikyafu.projects.taskmanagementapi.entity.Task;
@@ -25,6 +26,11 @@ public class TaskControllers {
     {
         return taskService.getAllTask();
     }
+
+//    @GetMapping("hello")
+//    public String hello (){
+//        return "Hello";
+//    }
     @GetMapping("/{id}")
     public ResponseEntity<Task> findTaskById(@PathVariable Long id)
     {
@@ -41,17 +47,17 @@ public class TaskControllers {
 
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task)
-//    {
-//        try {
-//            Task updatedTask=taskService.updateTask( id, task);
-//            return ResponseEntity.ok(updatedTask);
-//        } catch (ResourceNotFoundException  e) {
-//           return ResponseEntity.notFound().build();
-//        }
-//
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task)
+    {
+        try {
+            Task updatedTask=taskService.updateTask( id, task);
+            return ResponseEntity.ok(updatedTask);
+        } catch (ResourceNotFoundException  e) {
+           return ResponseEntity.notFound().build();
+        }
+
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id){
@@ -59,3 +65,4 @@ public class TaskControllers {
         return ResponseEntity.noContent().build();
     }
 }
+
